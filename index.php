@@ -37,10 +37,10 @@ function money($value): string { return $value ? '$' . number_format((float) $va
   <title><?php echo h($pageData['title']); ?></title>
   <meta name="description" content="<?php echo h($pageData['description']); ?>">
   <link rel="canonical" href="https://<?php echo h($site_domain . $pageData['path']); ?>">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
