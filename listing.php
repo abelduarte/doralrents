@@ -10,15 +10,15 @@ $listing = null;
 try {
     $listing = fetch_listing_detail($bridge_dataset, $bridge_server_token, $_GET);
     if (!$listing) {
-        $error = 'Listing not found or no longer available.';
+        $error = 'This home may no longer be available.';
     }
 } catch (Throwable $e) {
-    $error = $e->getMessage();
+    $error = 'This home may no longer be available.';
 }
 
-$address = $listing ? ($listing['address'] ?? 'Doral rental listing') : 'Doral rental listing';
+$address = $listing ? ($listing['address'] ?? 'Doral rental') : 'Doral rental';
 $photo = $listing ? listing_photo($listing, $bridge_browser_token) : null;
-$title = $address . ' | Doral Rental Listing';
+$title = $address . ' | Doral Rental';
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,7 +26,7 @@ $title = $address . ' | Doral Rental Listing';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo h($title); ?></title>
-  <meta name="description" content="View this Doral rental listing and contact Abel Duarte at 786-351-9165.">
+  <meta name="description" content="See this Doral rental and call Abel Duarte at 786-351-9165 for help scheduling a tour.">
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -43,7 +43,7 @@ $title = $address . ' | Doral Rental Listing';
   <main class="detail-page">
     <a class="back-link" href="/">Back to Doral rentals</a>
     <?php if ($error): ?>
-      <div class="alert"><?php echo h($error); ?> Call Abel at <?php echo h($phone_number); ?> for similar Doral rentals.</div>
+      <div class="alert"><?php echo h($error); ?> Call Abel at <?php echo h($phone_number); ?> and ask for similar Doral rentals that fit your move.</div>
     <?php else: ?>
       <section class="detail-hero">
         <div class="detail-photo">
@@ -57,9 +57,9 @@ $title = $address . ' | Doral Rental Listing';
             <span><?php echo h($listing['bathrooms'] ?? '-'); ?> ba</span>
             <?php if (!empty($listing['livingArea'])): ?><span><?php echo number_format((float) $listing['livingArea']); ?> sqft</span><?php endif; ?>
           </div>
-          <p><?php echo h($listing['remarks'] ?? 'Contact Abel for availability and showing details.'); ?></p>
+          <p><?php echo h($listing['remarks'] ?? 'Ask Abel about availability, showing times, application steps, and similar Doral rentals.'); ?></p>
           <a class="button primary wide" href="<?php echo h($phone_href); ?>">Call Abel Duarte</a>
-          <a class="button secondary wide" href="<?php echo h($sms_href); ?>">Text 786-351-9165</a>
+          <a class="button secondary wide" href="<?php echo h($sms_href); ?>">Text your questions</a>
         </aside>
       </section>
     <?php endif; ?>

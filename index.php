@@ -23,7 +23,7 @@ if (function_exists('curl_init')) {
         $idxError = $e->getMessage();
     }
 } else {
-    $idxError = 'PHP cURL is not enabled.';
+    $idxError = 'Homes are temporarily unavailable.';
 }
 
 function h($value): string { return htmlspecialchars((string) $value, ENT_QUOTES); }
@@ -60,10 +60,10 @@ function money($value): string { return $value ? '$' . number_format((float) $va
     <section class="hero">
       <div class="hero-copy">
         <h1><?php echo h($pageData['h1']); ?></h1>
-        <p><?php echo h($pageData['intro']); ?> Call or text Abel Duarte when a listing looks close, and he can help confirm availability before you waste a showing.</p>
+        <p><?php echo h($pageData['intro']); ?> Call or text Abel Duarte for a quick shortlist, showing advice, and a smoother path to the right place.</p>
         <div class="hero-actions">
-          <a class="button primary" href="<?php echo h($phone_href); ?>">Call Abel</a>
-          <a class="button secondary" href="<?php echo h($sms_href); ?>">Text 786-351-9165</a>
+          <a class="button primary" href="<?php echo h($phone_href); ?>">Call Abel now</a>
+          <a class="button secondary" href="<?php echo h($sms_href); ?>">Text your move date</a>
         </div>
       </div>
       <form class="search-panel" method="get" action="/">
@@ -93,21 +93,21 @@ function money($value): string { return $value ? '$' . number_format((float) $va
             <?php endfor; ?>
           </select>
         </label>
-        <button type="submit">Search Doral Rentals</button>
+        <button type="submit">Show Matching Homes</button>
       </form>
     </section>
 
     <section class="results-section" id="listings">
       <div class="section-heading">
         <div>
-          <h2>Available rental listings</h2>
-          <p>Updated from the IDX feed. Photos and availability can change quickly.</p>
+          <h2>Doral rentals worth a closer look</h2>
+          <p>Shortlist the homes that fit your budget, space, and timing. Abel can help you move quickly on the best ones.</p>
         </div>
-        <a class="text-link" href="<?php echo h($phone_href); ?>">Ask Abel what is still available</a>
+        <a class="text-link" href="<?php echo h($phone_href); ?>">Get Abel's shortlist</a>
       </div>
 
       <?php if ($idxError): ?>
-        <div class="alert"><?php echo h($idxError); ?> Add Bridge credentials in `config.local.php` or GitHub Secrets to show live listings.</div>
+        <div class="alert">Homes are temporarily unavailable here. Call Abel at <?php echo h($phone_number); ?> and he can still help you find strong Doral options.</div>
       <?php endif; ?>
 
       <div class="listing-grid">
@@ -136,8 +136,8 @@ function money($value): string { return $value ? '$' . number_format((float) $va
                 <?php if (!empty($listing['livingArea'])): ?><span><?php echo number_format((float) $listing['livingArea']); ?> sqft</span><?php endif; ?>
               </div>
               <div class="card-actions">
-                <a href="<?php echo h(listing_url($listing)); ?>">Details</a>
-                <a href="<?php echo h($phone_href); ?>">Call Abel</a>
+                <a href="<?php echo h(listing_url($listing)); ?>">See details</a>
+                <a href="<?php echo h($phone_href); ?>">Ask about it</a>
               </div>
             </div>
           </article>
@@ -149,9 +149,9 @@ function money($value): string { return $value ? '$' . number_format((float) $va
       <div class="section-heading">
         <div>
           <h2>Doral condo communities</h2>
-          <p>Community pages are based on the subdivision names currently appearing in the rental feed.</p>
+          <p>Start with a community you already like, or use the list to discover areas that match your commute, budget, and lifestyle.</p>
         </div>
-        <a class="text-link" href="<?php echo h($phone_href); ?>">Ask for a short list</a>
+        <a class="text-link" href="<?php echo h($phone_href); ?>">Ask Abel where to focus</a>
       </div>
       <div class="community-links">
         <?php foreach (community_page_links($communityLandingPages) as $landing): ?>
@@ -163,7 +163,7 @@ function money($value): string { return $value ? '$' . number_format((float) $va
     <section class="seo-section">
       <div>
         <h2>Doral rental searches</h2>
-        <p>Start with the page that matches how you are searching, then call or text when you want availability checked.</p>
+        <p>Choose the search that fits your move, then call or text for a focused list of places to see first.</p>
       </div>
       <div class="seo-links">
         <?php foreach (landing_page_links($landingPages) as $landing): ?>
@@ -175,10 +175,10 @@ function money($value): string { return $value ? '$' . number_format((float) $va
     <section class="agent-section">
       <img src="/assets/images/abel.jpg" alt="Abel Duarte">
       <div>
-        <h2>Tour faster with Abel Duarte</h2>
-        <p>For Doral rentals, speed matters. Tap once to call or text Abel at <?php echo h($phone_number); ?> and ask about current availability, pet rules, application requirements, or nearby alternatives.</p>
+        <h2>Move faster with a local Doral agent</h2>
+        <p>The best rentals can go quickly. Tap once to call or text Abel at <?php echo h($phone_number); ?> and get help with availability, pet rules, application steps, and better nearby alternatives.</p>
         <div class="hero-actions">
-          <a class="button primary" href="<?php echo h($phone_href); ?>">Call Abel</a>
+          <a class="button primary" href="<?php echo h($phone_href); ?>">Call Abel now</a>
           <a class="button secondary" href="<?php echo h($sms_href); ?>">Text Abel</a>
         </div>
       </div>

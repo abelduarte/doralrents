@@ -64,12 +64,11 @@ function doral_community_pages(array $communities): array
             'path' => $path,
             'title' => $name . ' Rentals | Doral Condos & Homes for Rent',
             'h1' => $name . ' rentals',
-            'description' => 'Browse rentals in ' . $name . ' in Doral and call Abel Duarte for current availability.',
+            'description' => 'See rentals in ' . $name . ' in Doral and call Abel Duarte for local help before you tour.',
             'query' => ['q' => 'doral', 'community' => $community['terms']],
-            'intro' => 'Current rental listings in ' . $name . ' pulled through the Duarte Realty Group feed.',
+            'intro' => 'Compare rental options in ' . $name . ' and get help deciding what is worth seeing first.',
             'community' => $community,
         ];
     }
     return $pages;
 }
-
