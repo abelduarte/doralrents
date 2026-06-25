@@ -67,9 +67,17 @@ function money($value): string { return $value ? '$' . number_format((float) $va
         </div>
       </div>
       <form class="search-panel" method="get" action="/">
+        <input type="hidden" name="q" value="doral">
         <label>
-          <span>Location</span>
-          <input name="q" value="<?php echo h($filters['q']); ?>" placeholder="Doral, 33178, building name">
+          <span>Community</span>
+          <select name="community">
+            <option value="">All Doral communities</option>
+            <?php foreach ($doralCommunities as $community): ?>
+              <option value="<?php echo h($community['terms']); ?>" <?php echo $filters['community'] === $community['terms'] ? 'selected' : ''; ?>>
+                <?php echo h($community['name']); ?>
+              </option>
+            <?php endforeach; ?>
+          </select>
         </label>
         <label>
           <span>Rental type</span>
