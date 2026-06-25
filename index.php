@@ -53,16 +53,16 @@ function money($value): string { return $value ? '$' . number_format((float) $va
       <a href="/doral-condos-for-rent">Condos</a>
       <a href="/doral-townhomes-for-rent">Townhomes</a>
     </nav>
-    <a class="header-call" href="<?php echo h($phone_href); ?>">Call <?php echo h($phone_number); ?></a>
+    <a class="header-call" href="<?php echo h($phone_href); ?>">Call now</a>
   </header>
 
   <main>
     <section class="hero">
       <div class="hero-copy">
         <h1><?php echo h($pageData['h1']); ?></h1>
-        <p><?php echo h($pageData['intro']); ?> Call or text Abel Duarte for a quick shortlist, showing advice, and a smoother path to the right place.</p>
+        <p><?php echo h($pageData['intro']); ?> Call or text for a quick shortlist, showing advice, and a smoother path to the right place.</p>
         <div class="hero-actions">
-          <a class="button primary" href="<?php echo h($phone_href); ?>">Call Abel now</a>
+          <a class="button primary" href="<?php echo h($phone_href); ?>">Call now</a>
           <a class="button secondary" href="<?php echo h($sms_href); ?>">Text your move date</a>
         </div>
       </div>
@@ -101,13 +101,13 @@ function money($value): string { return $value ? '$' . number_format((float) $va
       <div class="section-heading">
         <div>
           <h2>Doral rentals worth a closer look</h2>
-          <p>Shortlist the homes that fit your budget, space, and timing. Abel can help you move quickly on the best ones.</p>
+          <p>Shortlist the homes that fit your budget, space, and timing, then move quickly on the best ones.</p>
         </div>
-        <a class="text-link" href="<?php echo h($phone_href); ?>">Get Abel's shortlist</a>
+        <a class="text-link" href="<?php echo h($phone_href); ?>">Get a shortlist</a>
       </div>
 
       <?php if ($idxError): ?>
-        <div class="alert">Homes are temporarily unavailable here. Call Abel at <?php echo h($phone_number); ?> and he can still help you find strong Doral options.</div>
+        <div class="alert">Homes are temporarily unavailable here. Call now and get help finding strong Doral options.</div>
       <?php endif; ?>
 
       <div class="listing-grid">
@@ -151,7 +151,7 @@ function money($value): string { return $value ? '$' . number_format((float) $va
           <h2>Doral condo communities</h2>
           <p>Start with a community you already like, or use the list to discover areas that match your commute, budget, and lifestyle.</p>
         </div>
-        <a class="text-link" href="<?php echo h($phone_href); ?>">Ask Abel where to focus</a>
+        <a class="text-link" href="<?php echo h($phone_href); ?>">Ask where to focus</a>
       </div>
       <div class="community-links">
         <?php foreach (community_page_links($communityLandingPages) as $landing): ?>
@@ -173,25 +173,25 @@ function money($value): string { return $value ? '$' . number_format((float) $va
     </section>
 
     <section class="agent-section">
-      <img src="/assets/images/abel.jpg" alt="Abel Duarte">
+      <img src="/assets/images/abel.jpg" alt="Local Doral rental agent">
       <div>
         <h2>Move faster with a local Doral agent</h2>
-        <p>The best rentals can go quickly. Tap once to call or text Abel at <?php echo h($phone_number); ?> and get help with availability, pet rules, application steps, and better nearby alternatives.</p>
+        <p>The best rentals can go quickly. Tap once to call or text and get help with availability, pet rules, application steps, and better nearby alternatives.</p>
         <div class="hero-actions">
-          <a class="button primary" href="<?php echo h($phone_href); ?>">Call Abel now</a>
-          <a class="button secondary" href="<?php echo h($sms_href); ?>">Text Abel</a>
+          <a class="button primary" href="<?php echo h($phone_href); ?>">Call now</a>
+          <a class="button secondary" href="<?php echo h($sms_href); ?>">Text questions</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <span>Doral Rents by Abel Duarte, Licensed Real Estate Broker</span>
-    <a href="<?php echo h($phone_href); ?>"><?php echo h($phone_number); ?></a>
+    <span>Doral Rents | Local rental guidance</span>
+    <a href="<?php echo h($phone_href); ?>">Call now</a>
   </footer>
 
   <div class="mobile-cta">
-    <a href="<?php echo h($phone_href); ?>">Call Abel</a>
+    <a href="<?php echo h($phone_href); ?>">Call now</a>
     <a href="<?php echo h($sms_href); ?>">Text</a>
   </div>
 </body>

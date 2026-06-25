@@ -26,7 +26,7 @@ $title = $address . ' | Doral Rental';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo h($title); ?></title>
-  <meta name="description" content="See this Doral rental and call Abel Duarte at 786-351-9165 for help scheduling a tour.">
+  <meta name="description" content="See this Doral rental and call for help scheduling a tour.">
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
@@ -38,12 +38,12 @@ $title = $address . ' | Doral Rental';
     <a class="brand" href="/" aria-label="Doral Rents home">
       <img class="brand-logo" src="/assets/images/doralrents-logo.png" alt="DoralRents.com">
     </a>
-    <a class="header-call" href="<?php echo h($phone_href); ?>">Call <?php echo h($phone_number); ?></a>
+    <a class="header-call" href="<?php echo h($phone_href); ?>">Call now</a>
   </header>
   <main class="detail-page">
     <a class="back-link" href="/">Back to Doral rentals</a>
     <?php if ($error): ?>
-      <div class="alert"><?php echo h($error); ?> Call Abel at <?php echo h($phone_number); ?> and ask for similar Doral rentals that fit your move.</div>
+      <div class="alert"><?php echo h($error); ?> Call now and ask for similar Doral rentals that fit your move.</div>
     <?php else: ?>
       <section class="detail-hero">
         <div class="detail-photo">
@@ -57,15 +57,15 @@ $title = $address . ' | Doral Rental';
             <span><?php echo h($listing['bathrooms'] ?? '-'); ?> ba</span>
             <?php if (!empty($listing['livingArea'])): ?><span><?php echo number_format((float) $listing['livingArea']); ?> sqft</span><?php endif; ?>
           </div>
-          <p><?php echo h($listing['remarks'] ?? 'Ask Abel about availability, showing times, application steps, and similar Doral rentals.'); ?></p>
-          <a class="button primary wide" href="<?php echo h($phone_href); ?>">Call Abel Duarte</a>
+          <p><?php echo h($listing['remarks'] ?? 'Ask about availability, showing times, application steps, and similar Doral rentals.'); ?></p>
+          <a class="button primary wide" href="<?php echo h($phone_href); ?>">Call now</a>
           <a class="button secondary wide" href="<?php echo h($sms_href); ?>">Text your questions</a>
         </aside>
       </section>
     <?php endif; ?>
   </main>
   <div class="mobile-cta">
-    <a href="<?php echo h($phone_href); ?>">Call Abel</a>
+    <a href="<?php echo h($phone_href); ?>">Call now</a>
     <a href="<?php echo h($sms_href); ?>">Text</a>
   </div>
 </body>
