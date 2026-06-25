@@ -1,0 +1,79 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy Website
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-doralrents
+      cancel-in-progress: false
+    env:
+      WEBSITE_ARCHIVE: website.tar.gz
+      WEBSITE_DEPLOY_PATH: ${{ secrets.WEB_DEPLOY_PATH || '/var/www/doralrents' }}
+      DRG_API_BASE: ${{ secrets.DRG_API_BASE || 'https://duarterealtygroup.com/api' }}
+      DRG_API_ACCESS_TOKEN: ${{ secrets.DRG_API_ACCESS_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Package website assets
+        run: |
+          set -Eeuo pipefail
+          python3 <<'PY'
+          import os
+
+          def php_string(value):
+              return "'" + value.replace("\\", "\\\\").replace("'", "\\'") + "'"
+
+          config = {
+              "drg_api_base": os.getenv("DRG_API_BASE", "https://duarterealtygroup.com/api"),
+              "drg_api_access_token": os.getenv("DRG_API_ACCESS_TOKEN", ""),
+          }
+
+          with open("config.local.php", "w", encoding="utf-8") as fh:
+              fh.write("<?php\n")
+              for name, value in config.items():
+                  fh.write(f"${name} = {php_string(value)};\n")
+
+          PY
+          chmod 644 config.local.php
+          tar czf "${WEBSITE_ARCHIVE}" --exclude='.git' --exclude='.github' -C "${GITHUB_WORKSPACE}" .
+
+      - name: Upload archive
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.WEB_SSH_HOST }}
+          username: ${{ secrets.WEB_SSH_USER }}
+          key: ${{ secrets.WEB_SSH_KEY }}
+          port: ${{ secrets.WEB_SSH_PORT || '22' }}
+          source: ${{ env.WEBSITE_ARCHIVE }}
+          target: /tmp
+          overwrite: true
+
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.WEB_SSH_HOST }}
+          username: ${{ secrets.WEB_SSH_USER }}
+          key: ${{ secrets.WEB_SSH_KEY }}
+          port: ${{ secrets.WEB_SSH_PORT || '22' }}
+          script_stop: true
+          envs: WEBSITE_ARCHIVE,WEBSITE_DEPLOY_PATH
+          script: |
+            set -Eeuo pipefail
+            ARCHIVE_PATH="/tmp/${WEBSITE_ARCHIVE}"
+            DEST="${WEBSITE_DEPLOY_PATH:-/var/www/doralrents}"
+            sudo env ARCHIVE_PATH="$ARCHIVE_PATH" DEST="$DEST" bash <<'EOF'
+            set -Eeuo pipefail
+            mkdir -p "$DEST"
+            find "$DEST" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+            tar xzf "$ARCHIVE_PATH" -C "$DEST"
+            rm -f "$ARCHIVE_PATH"
+            chmod 644 "$DEST/config.local.php"
+            EOF
