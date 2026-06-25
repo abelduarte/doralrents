@@ -8,7 +8,7 @@ $filters = array_merge($pageData['query'], [
     'q' => $_GET['q'] ?? ($pageData['query']['q'] ?? 'doral'),
     'kind' => $_GET['kind'] ?? ($pageData['query']['kind'] ?? ''),
     'min_price' => $_GET['min_price'] ?? ($pageData['query']['min_price'] ?? ''),
-    'max_price' => $_GET['max_price'] ?? '',
+    'max_price' => $_GET['max_price'] ?? ($pageData['query']['max_price'] ?? ''),
     'beds' => $_GET['beds'] ?? ($pageData['query']['beds'] ?? ''),
     'baths' => $_GET['baths'] ?? '',
     'community' => $_GET['community'] ?? ($pageData['query']['community'] ?? ''),
@@ -83,6 +83,10 @@ function money($value): string { return $value ? '$' . number_format((float) $va
         <label>
           <span>Min rent</span>
           <input name="min_price" inputmode="numeric" value="<?php echo h($filters['min_price']); ?>" placeholder="$2,500">
+        </label>
+        <label>
+          <span>Max rent</span>
+          <input name="max_price" inputmode="numeric" value="<?php echo h($filters['max_price']); ?>" placeholder="$4,000">
         </label>
         <label>
           <span>Beds</span>
