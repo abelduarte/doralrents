@@ -43,7 +43,9 @@ jobs:
 
           PY
           chmod 644 config.local.php
-          tar czf "${WEBSITE_ARCHIVE}" --exclude='.git' --exclude='.github' -C "${GITHUB_WORKSPACE}" .
+          ARCHIVE_PATH="${RUNNER_TEMP}/${WEBSITE_ARCHIVE}"
+          tar czf "${ARCHIVE_PATH}" --exclude='.git' --exclude='.github' -C "${GITHUB_WORKSPACE}" .
+          mv "${ARCHIVE_PATH}" "${GITHUB_WORKSPACE}/${WEBSITE_ARCHIVE}"
 
       - name: Upload archive
         uses: appleboy/scp-action@v0.1.7
