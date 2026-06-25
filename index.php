@@ -11,6 +11,7 @@ $filters = array_merge($pageData['query'], [
     'max_price' => $_GET['max_price'] ?? '',
     'beds' => $_GET['beds'] ?? ($pageData['query']['beds'] ?? ''),
     'baths' => $_GET['baths'] ?? '',
+    'community' => $_GET['community'] ?? ($pageData['query']['community'] ?? ''),
 ]);
 
 $idxError = null;
@@ -36,14 +37,16 @@ function money($value): string { return $value ? '$' . number_format((float) $va
   <title><?php echo h($pageData['title']); ?></title>
   <meta name="description" content="<?php echo h($pageData['description']); ?>">
   <link rel="canonical" href="https://<?php echo h($site_domain . $pageData['path']); ?>">
-  <link rel="icon" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="/" aria-label="Doral Rents home">
-      <span class="brand-mark">DR</span>
-      <span>Doral Rents</span>
+      <img class="brand-logo" src="/assets/images/doralrents-logo.png" alt="DoralRents.com">
     </a>
     <nav class="nav-links" aria-label="Main navigation">
       <a href="/doral-apartments-for-rent">Apartments</a>
@@ -124,6 +127,9 @@ function money($value): string { return $value ? '$' . number_format((float) $va
                 <span><?php echo h($listing['propertySubType'] ?? 'Rental'); ?></span>
               </div>
               <a class="listing-title" href="<?php echo h(listing_url($listing)); ?>"><?php echo h($address ?: 'Doral rental'); ?></a>
+              <?php if (!empty($listing['community'])): ?>
+                <div class="listing-community"><?php echo h($listing['community']); ?></div>
+              <?php endif; ?>
               <div class="listing-meta">
                 <span><?php echo h($listing['bedrooms'] ?? '-'); ?> bd</span>
                 <span><?php echo h($listing['bathrooms'] ?? '-'); ?> ba</span>
@@ -135,6 +141,21 @@ function money($value): string { return $value ? '$' . number_format((float) $va
               </div>
             </div>
           </article>
+        <?php endforeach; ?>
+      </div>
+    </section>
+
+    <section class="community-section">
+      <div class="section-heading">
+        <div>
+          <h2>Doral condo communities</h2>
+          <p>Community pages are based on the subdivision names currently appearing in the rental feed.</p>
+        </div>
+        <a class="text-link" href="<?php echo h($phone_href); ?>">Ask for a short list</a>
+      </div>
+      <div class="community-links">
+        <?php foreach (community_page_links($communityLandingPages) as $landing): ?>
+          <a href="<?php echo h($landing['path']); ?>"><?php echo h($landing['community']['name']); ?></a>
         <?php endforeach; ?>
       </div>
     </section>

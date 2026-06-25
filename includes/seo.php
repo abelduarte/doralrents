@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/communities.php';
+
 $landingPages = [
     '' => [
         'path' => '/',
@@ -83,6 +85,9 @@ $landingPages = [
     ],
 ];
 
+$communityLandingPages = doral_community_pages($doralCommunities);
+$landingPages = array_merge($landingPages, $communityLandingPages);
+
 function current_landing_page(array $landingPages): array
 {
     $path = trim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH), '/');
@@ -91,6 +96,10 @@ function current_landing_page(array $landingPages): array
 
 function landing_page_links(array $landingPages): array
 {
-    return array_values(array_filter($landingPages, fn ($page) => $page['path'] !== '/'));
+    return array_values(array_filter($landingPages, fn ($page) => $page['path'] !== '/' && empty($page['community'])));
 }
 
+function community_page_links(array $communityLandingPages): array
+{
+    return array_values($communityLandingPages);
+}

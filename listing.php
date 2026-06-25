@@ -28,11 +28,16 @@ $title = $address . ' | Doral Rental Listing';
   <title><?php echo h($title); ?></title>
   <meta name="description" content="View this Doral rental listing and contact Abel Duarte at 786-351-9165.">
   <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="/"><span class="brand-mark">DR</span><span>Doral Rents</span></a>
+    <a class="brand" href="/" aria-label="Doral Rents home">
+      <img class="brand-logo" src="/assets/images/doralrents-logo.png" alt="DoralRents.com">
+    </a>
     <a class="header-call" href="<?php echo h($phone_href); ?>">Call <?php echo h($phone_number); ?></a>
   </header>
   <main class="detail-page">

@@ -3,3 +3,5 @@ config.local.php
 website.tar.gz
 .playwright-mcp/
 doralrents-*.png
+!assets/images/doralrents-logo.png
+.venv-image-assets/

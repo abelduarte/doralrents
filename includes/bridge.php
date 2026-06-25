@@ -76,6 +76,7 @@ function fetch_bridge_listings(string $dataset, string $serverToken, array $filt
         'max_price' => $filters['max_price'] ?? '',
         'beds' => $filters['beds'] ?? '',
         'baths' => $filters['baths'] ?? '',
+        'community' => $filters['community'] ?? '',
         'limit' => $limit,
         'offset' => $offset,
     ]);
