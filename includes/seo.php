@@ -33,9 +33,29 @@ $landingPages = [
         'path' => '/doral-townhomes-for-rent',
         'title' => 'Doral Townhomes for Rent | Townhouse Rentals',
         'h1' => 'Doral townhomes for rent',
-        'description' => 'Browse Doral townhouse rentals and get direct help choosing the right fit.',
+        'description' => 'Browse Doral townhomes for rent and compare townhouse rentals by layout, community, budget, and commute.',
         'query' => ['q' => 'doral', 'kind' => 'townhome'],
-        'intro' => 'Find townhome rentals in Doral when you want more space, privacy, and a neighborhood feel.',
+        'intro' => 'Find townhome rentals in Doral when you want more space, privacy, parking, and a neighborhood feel.',
+        'content_blocks' => [
+            [
+                'heading' => 'How to compare Doral townhome rentals',
+                'body' => 'Townhomes in Doral can vary a lot by community rules, parking, bedroom layout, association approval time, and outdoor space. Start by comparing total monthly cost, move-in timing, garage or driveway access, and whether the floor plan works for guests, remote work, or family routines.',
+            ],
+            [
+                'heading' => 'Where renters often focus',
+                'body' => 'Many renters start near Islands at Doral, Landmark, Downtown Doral, Doral Isles, and Park Central because those areas can offer a mix of townhomes, newer construction, and practical access to schools, parks, shopping, and major roads.',
+            ],
+        ],
+        'faqs' => [
+            [
+                'question' => 'Are Doral townhomes usually harder to rent than apartments?',
+                'answer' => 'They can move quickly because there are fewer townhome rentals than apartment-style options. Association approval, pet rules, and move-in deposits should be checked before you apply.',
+            ],
+            [
+                'question' => 'What should I confirm before touring a Doral townhouse?',
+                'answer' => 'Confirm parking, association approval timing, pet restrictions, included utilities, yard or patio responsibility, and whether the advertised rent matches the required move-in costs.',
+            ],
+        ],
     ],
     'doral-houses-for-rent' => [
         'path' => '/doral-houses-for-rent',
@@ -68,6 +88,12 @@ $landingPages = [
         'description' => 'Find premium Doral townhomes for rent with more space, privacy, and upgraded finishes.',
         'query' => ['q' => 'doral', 'kind' => 'townhome', 'min_price' => 3500],
         'intro' => 'Compare upscale Doral townhomes when you want more space without losing a polished feel.',
+        'content_blocks' => [
+            [
+                'heading' => 'What makes a Doral townhome feel luxury',
+                'body' => 'Higher-end townhomes often compete on newer construction, garage parking, larger bedroom suites, outdoor areas, gated access, and proximity to Downtown Doral, parks, and commuter routes. The best fit depends on whether you value finishes, privacy, school access, or shorter drive times most.',
+            ],
+        ],
     ],
     'pet-friendly-apartments-doral' => [
         'path' => '/pet-friendly-apartments-doral',
@@ -124,6 +150,12 @@ $landingPages = [
         'description' => 'Find three bedroom Doral townhomes and larger rental homes.',
         'query' => ['q' => 'doral', 'kind' => 'townhome', 'beds' => 3],
         'intro' => 'Focus on larger Doral rentals with room for family, work, and storage.',
+        'content_blocks' => [
+            [
+                'heading' => 'Best-fit uses for a 3 bedroom townhome',
+                'body' => 'Three bedroom townhomes are a common fit for renters who need a home office, guest room, or more separation than an apartment can provide. Check bedroom placement, stairs, storage, parking, and association timelines before deciding which homes are worth touring.',
+            ],
+        ],
     ],
     '4-bedroom-townhomes-doral' => [
         'path' => '/4-bedroom-townhomes-doral',
@@ -172,6 +204,86 @@ $landingPages = [
         'description' => 'Find Doral townhomes under $3,500 and get help comparing the best available options.',
         'query' => ['q' => 'doral', 'kind' => 'townhome', 'max_price' => 3500],
         'intro' => 'Look for Doral townhomes under $3,500 when you want more space without overspending.',
+        'content_blocks' => [
+            [
+                'heading' => 'How to shop under $3,500',
+                'body' => 'Townhomes under $3,500 can be competitive when inventory is tight. Compare total move-in cost, association fees, pet deposits, and commute tradeoffs instead of judging by rent alone.',
+            ],
+        ],
+    ],
+    'townhomes-for-rent-in-doral' => [
+        'path' => '/townhomes-for-rent-in-doral',
+        'title' => 'Townhomes for Rent in Doral | Local Townhouse Search',
+        'h1' => 'Townhomes for rent in Doral',
+        'description' => 'Search townhomes for rent in Doral and get local help comparing communities, approval timelines, and move-in costs.',
+        'query' => ['q' => 'doral', 'kind' => 'townhome'],
+        'intro' => 'Compare Doral townhomes by community, bedroom count, parking, approval timing, and total move-in cost.',
+        'content_blocks' => [
+            [
+                'heading' => 'A focused townhome search saves time',
+                'body' => 'The best Doral townhome search starts with the practical constraints: commute, school zone preference, parking needs, pet rules, association approval time, and whether stairs or split-level layouts work for daily life.',
+            ],
+            [
+                'heading' => 'Tour the strongest matches first',
+                'body' => 'A rental can look similar online but feel very different in person. Prioritize homes with the right parking, natural light, storage, and community access before spending time on listings with uncertain approval rules or weak availability.',
+            ],
+        ],
+        'faqs' => [
+            [
+                'question' => 'How much do townhomes for rent in Doral usually cost?',
+                'answer' => 'Pricing changes with inventory, bedroom count, condition, and community. The most useful comparison is total monthly cost plus move-in funds, not rent alone.',
+            ],
+            [
+                'question' => 'Can I rent a Doral townhome quickly?',
+                'answer' => 'Some townhomes can move quickly, but association approval may add time. Before applying, confirm application steps, deposits, and any HOA timeline.',
+            ],
+        ],
+    ],
+    'townhouse-for-rent-in-doral' => [
+        'path' => '/townhouse-for-rent-in-doral',
+        'title' => 'Townhouse for Rent in Doral | Find the Right Fit',
+        'h1' => 'Find a townhouse for rent in Doral',
+        'description' => 'Find a townhouse for rent in Doral with help checking availability, move-in costs, parking, and community rules.',
+        'query' => ['q' => 'doral', 'kind' => 'townhome'],
+        'intro' => 'Find a Doral townhouse that fits your space needs, budget, commute, and move-in timeline.',
+        'content_blocks' => [
+            [
+                'heading' => 'What to check on a single townhouse listing',
+                'body' => 'Before you apply for a townhouse, confirm the exact bedrooms and baths, parking assignment, included appliances, pet policy, association approval, move-in deposits, and whether the listing is still active.',
+            ],
+            [
+                'heading' => 'Have backup options ready',
+                'body' => 'A strong townhouse can receive multiple inquiries quickly. Keep two or three comparable Doral options ready so you can move without restarting your search if the first choice is taken.',
+            ],
+        ],
+    ],
+    'doral-rental-communities' => [
+        'path' => '/doral-rental-communities',
+        'title' => 'Doral Rental Communities | Apartments, Condos & Townhomes',
+        'h1' => 'Doral rental communities',
+        'description' => 'Compare Doral rental communities and get help choosing where to focus your apartment, condo, or townhome search.',
+        'query' => ['q' => 'doral'],
+        'intro' => 'Use Doral rental communities to narrow your search by lifestyle, commute, building style, and move-in timing.',
+        'content_blocks' => [
+            [
+                'heading' => 'Choosing the right Doral rental community',
+                'body' => 'Doral communities differ by building age, amenities, association rules, parking, access to parks, and proximity to Downtown Doral, schools, shopping, and major roads. A community-first search helps you avoid touring homes that are technically available but not practical for your routine.',
+            ],
+            [
+                'heading' => 'Community rules matter before you apply',
+                'body' => 'Many condo and townhome communities have association applications, pet limits, move-in rules, deposits, and approval timelines. Confirm those details early so a good listing does not turn into a delayed or expensive move.',
+            ],
+        ],
+        'faqs' => [
+            [
+                'question' => 'Which Doral rental community is best?',
+                'answer' => 'The best community depends on your budget, commute, preferred property type, parking needs, pet rules, and move-in date. Shortlisting by those details is usually faster than starting with every available rental.',
+            ],
+            [
+                'question' => 'Do Doral rental communities require association approval?',
+                'answer' => 'Many condo and townhome communities do require approval. Before applying, confirm the documents, fees, deposits, and expected approval timeline.',
+            ],
+        ],
     ],
 ];
 
@@ -273,6 +385,21 @@ function landing_page_schema(array $pageData): array
                     'item' => $url,
                 ],
             ],
+        ];
+    }
+
+    if (!empty($pageData['faqs'])) {
+        $schema['@graph'][] = [
+            '@type' => 'FAQPage',
+            '@id' => $url . '#faq',
+            'mainEntity' => array_map(fn ($faq) => [
+                '@type' => 'Question',
+                'name' => $faq['question'],
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => $faq['answer'],
+                ],
+            ], $pageData['faqs']),
         ];
     }
 

@@ -73,9 +73,29 @@ function doral_community_pages(array $communities): array
             'path' => $path,
             'title' => $name . ' Rentals | Doral Condos & Homes for Rent',
             'h1' => $name . ' rentals',
-            'description' => 'See rentals in ' . $name . ' in Doral and get local help before you tour.',
+            'description' => 'See ' . $name . ' rentals in Doral and get help checking availability, association rules, and move-in costs.',
             'query' => ['q' => 'doral', 'community' => $community['terms']],
             'intro' => 'Compare rental options in ' . $name . ' and get help deciding what is worth seeing first.',
+            'content_blocks' => [
+                [
+                    'heading' => 'Renting in ' . $name,
+                    'body' => $name . ' can be a useful starting point when you want a more focused Doral search. Compare active rentals by price, bedroom count, parking, layout, and how well the community fits your commute and daily routine.',
+                ],
+                [
+                    'heading' => 'What to confirm before applying',
+                    'body' => 'Before you apply in ' . $name . ', check current availability, association approval steps, pet restrictions, move-in deposits, included utilities, parking details, and whether the rental timeline fits your move date.',
+                ],
+            ],
+            'faqs' => [
+                [
+                    'question' => 'Are rentals available in ' . $name . '?',
+                    'answer' => 'Availability changes often. The fastest approach is to confirm active listings, application requirements, and similar nearby Doral options before scheduling tours.',
+                ],
+                [
+                    'question' => 'What should I know before renting in ' . $name . '?',
+                    'answer' => 'Review association rules, approval timing, move-in costs, parking, pet policy, and lease terms before submitting an application.',
+                ],
+            ],
             'community' => $community,
         ];
     }

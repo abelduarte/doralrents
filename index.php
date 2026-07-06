@@ -67,6 +67,7 @@ function money($value): string { return $value ? '$' . number_format((float) $va
       <a href="/doral-apartments-for-rent">Apartments</a>
       <a href="/doral-condos-for-rent">Condos</a>
       <a href="/doral-townhomes-for-rent">Townhomes</a>
+      <a href="/doral-rental-communities">Communities</a>
     </nav>
     <a class="header-call" href="<?php echo h($phone_href); ?>">Call now</a>
   </header>
@@ -171,6 +172,33 @@ function money($value): string { return $value ? '$' . number_format((float) $va
         <?php endforeach; ?>
       </div>
     </section>
+
+    <?php if (!empty($pageData['content_blocks']) || !empty($pageData['faqs'])): ?>
+      <section class="guide-section">
+        <?php if (!empty($pageData['content_blocks'])): ?>
+          <div class="guide-grid">
+            <?php foreach ($pageData['content_blocks'] as $block): ?>
+              <article>
+                <h2><?php echo h($block['heading']); ?></h2>
+                <p><?php echo h($block['body']); ?></p>
+              </article>
+            <?php endforeach; ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if (!empty($pageData['faqs'])): ?>
+          <div class="faq-list">
+            <h2>Questions renters ask</h2>
+            <?php foreach ($pageData['faqs'] as $faq): ?>
+              <details>
+                <summary><?php echo h($faq['question']); ?></summary>
+                <p><?php echo h($faq['answer']); ?></p>
+              </details>
+            <?php endforeach; ?>
+          </div>
+        <?php endif; ?>
+      </section>
+    <?php endif; ?>
 
     <section class="community-section">
       <div class="section-heading">

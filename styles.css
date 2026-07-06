@@ -123,7 +123,7 @@ main { overflow: hidden; }
 }
 .search-panel button { width: 100%; border: 0; cursor: pointer; font-size: 15px; }
 
-.results-section, .community-section, .seo-section, .agent-section, footer, .detail-page {
+.results-section, .guide-section, .community-section, .seo-section, .agent-section, footer, .detail-page {
   padding: clamp(42px, 6vw, 76px) clamp(20px, 5vw, 64px);
 }
 .section-heading {
@@ -165,6 +165,41 @@ h2 { margin: 0; font-size: clamp(28px, 3vw, 42px); line-height: 1.05; }
 .card-actions a:last-child { background: var(--green); color: #fff; }
 
 .community-section { background: #fff; }
+.guide-section {
+  display: grid;
+  gap: 28px;
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.guide-grid article, .faq-list {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--soft);
+}
+.guide-grid h2, .faq-list h2 { font-size: clamp(24px, 2.5vw, 34px); }
+.guide-grid p, .faq-list p { color: var(--muted); line-height: 1.65; }
+.faq-list {
+  display: grid;
+  gap: 10px;
+}
+.faq-list details {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+.faq-list summary {
+  cursor: pointer;
+  color: var(--green);
+  font-weight: 900;
+}
+.faq-list details p { margin-bottom: 0; }
 .community-links {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -226,7 +261,7 @@ footer {
 
 @media (max-width: 940px) {
   .hero, .seo-section, .agent-section, .detail-hero { grid-template-columns: 1fr; }
-  .listing-grid, .community-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .listing-grid, .guide-grid, .community-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nav-links { display: none; }
   .detail-summary { position: static; }
 }
@@ -237,9 +272,9 @@ footer {
   .header-call { display: none; }
   .hero { padding: 34px 16px 28px; }
   .hero-copy h1 { font-size: 42px; }
-  .listing-grid, .seo-links, .community-links { grid-template-columns: 1fr; }
+  .listing-grid, .guide-grid, .seo-links, .community-links { grid-template-columns: 1fr; }
   .section-heading { display: block; }
-  .results-section, .community-section, .seo-section, .agent-section, footer, .detail-page { padding: 38px 16px; }
+  .results-section, .guide-section, .community-section, .seo-section, .agent-section, footer, .detail-page { padding: 38px 16px; }
   .agent-section img { width: 128px; }
   footer { display: block; padding-bottom: 92px; }
   .mobile-cta {
