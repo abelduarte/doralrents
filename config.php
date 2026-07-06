@@ -23,3 +23,9 @@ $sendgrid_from_name = getenv('SENDGRID_FROM_NAME') ?: 'Doral Rents';
 if (file_exists(__DIR__ . '/config.local.php')) {
     require_once __DIR__ . '/config.local.php';
 }
+
+if (PHP_SAPI !== 'cli' && strtolower($_SERVER['HTTP_HOST'] ?? '') === 'www.' . $site_domain) {
+    $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
+    header('Location: https://' . $site_domain . $requestUri, true, 301);
+    exit;
+}

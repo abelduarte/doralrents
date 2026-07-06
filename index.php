@@ -4,6 +4,7 @@ require_once __DIR__ . '/includes/seo.php';
 require_once __DIR__ . '/includes/bridge.php';
 
 $pageData = current_landing_page($landingPages);
+$canonicalUrl = canonical_url($pageData['path']);
 $filters = array_merge($pageData['query'], [
     'q' => $_GET['q'] ?? ($pageData['query']['q'] ?? 'doral'),
     'kind' => $_GET['kind'] ?? ($pageData['query']['kind'] ?? ''),
@@ -36,7 +37,21 @@ function money($value): string { return $value ? '$' . number_format((float) $va
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo h($pageData['title']); ?></title>
   <meta name="description" content="<?php echo h($pageData['description']); ?>">
-  <link rel="canonical" href="https://<?php echo h($site_domain . $pageData['path']); ?>">
+  <?php if (!empty($pageData['not_found'])): ?>
+  <meta name="robots" content="noindex,follow">
+  <?php else: ?>
+  <link rel="canonical" href="<?php echo h($canonicalUrl); ?>">
+  <?php endif; ?>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="<?php echo h($site_name); ?>">
+  <meta property="og:title" content="<?php echo h($pageData['title']); ?>">
+  <meta property="og:description" content="<?php echo h($pageData['description']); ?>">
+  <meta property="og:url" content="<?php echo h($canonicalUrl); ?>">
+  <meta property="og:image" content="<?php echo h(canonical_url('/assets/images/doralrents-logo.png')); ?>">
+  <meta name="twitter:card" content="summary_large_image">
+  <?php if (empty($pageData['not_found'])): ?>
+  <script type="application/ld+json"><?php echo json_ld(landing_page_schema($pageData)); ?></script>
+  <?php endif; ?>
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=2">

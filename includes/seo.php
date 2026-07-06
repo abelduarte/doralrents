@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/communities.php';
 
+$sitemap_lastmod = '2026-07-06';
+
 $landingPages = [
     '' => [
         'path' => '/',
@@ -179,7 +181,17 @@ $landingPages = array_merge($landingPages, $communityLandingPages);
 function current_landing_page(array $landingPages): array
 {
     $path = trim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH), '/');
-    return $landingPages[$path] ?? $landingPages[''];
+    if (!isset($landingPages[$path])) {
+        http_response_code(404);
+        return array_merge($landingPages[''], [
+            'title' => 'Doral Rental Page Not Found | Doral Rents',
+            'h1' => 'Doral rental page not found',
+            'description' => 'This Doral rental page could not be found. Search current Doral rentals and get local help.',
+            'intro' => 'The page you requested could not be found, but you can still search current Doral rental options here.',
+            'not_found' => true,
+        ]);
+    }
+    return $landingPages[$path];
 }
 
 function landing_page_links(array $landingPages): array
@@ -190,4 +202,79 @@ function landing_page_links(array $landingPages): array
 function community_page_links(array $communityLandingPages): array
 {
     return array_values($communityLandingPages);
+}
+
+function canonical_url(string $path): string
+{
+    global $site_domain;
+    return 'https://' . $site_domain . $path;
+}
+
+function json_ld(array $data): string
+{
+    return json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+}
+
+function landing_page_schema(array $pageData): array
+{
+    global $site_name, $site_domain, $phone_number, $contact_email;
+
+    $url = canonical_url($pageData['path']);
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'RealEstateAgent',
+                '@id' => 'https://' . $site_domain . '/#agent',
+                'name' => $site_name,
+                'url' => 'https://' . $site_domain . '/',
+                'telephone' => $phone_number,
+                'email' => $contact_email,
+                'areaServed' => [
+                    '@type' => 'City',
+                    'name' => 'Doral',
+                    'addressRegion' => 'FL',
+                    'addressCountry' => 'US',
+                ],
+            ],
+            [
+                '@type' => 'WebSite',
+                '@id' => 'https://' . $site_domain . '/#website',
+                'name' => $site_name,
+                'url' => 'https://' . $site_domain . '/',
+            ],
+            [
+                '@type' => 'WebPage',
+                '@id' => $url . '#webpage',
+                'url' => $url,
+                'name' => $pageData['title'],
+                'description' => $pageData['description'],
+                'isPartOf' => ['@id' => 'https://' . $site_domain . '/#website'],
+                'about' => ['@id' => 'https://' . $site_domain . '/#agent'],
+            ],
+        ],
+    ];
+
+    if (!empty($pageData['community'])) {
+        $schema['@graph'][] = [
+            '@type' => 'BreadcrumbList',
+            '@id' => $url . '#breadcrumb',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Doral rentals',
+                    'item' => 'https://' . $site_domain . '/',
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => $pageData['community']['name'] . ' rentals',
+                    'item' => $url,
+                ],
+            ],
+        ];
+    }
+
+    return $schema;
 }

@@ -27,6 +27,7 @@ $title = $address . ' | Doral Rental';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo h($title); ?></title>
   <meta name="description" content="See this Doral rental and call for help scheduling a tour.">
+  <meta name="robots" content="noindex,follow">
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
