@@ -29,6 +29,49 @@ if (function_exists('curl_init')) {
 
 function h($value): string { return htmlspecialchars((string) $value, ENT_QUOTES); }
 function money($value): string { return $value ? '$' . number_format((float) $value) : 'Price on request'; }
+function listing_search_snapshot(array $listings): array
+{
+    $prices = [];
+    $beds = [];
+    $communities = [];
+
+    foreach ($listings as $listing) {
+        if (!empty($listing['price'])) {
+            $prices[] = (float) $listing['price'];
+        }
+        if (!empty($listing['bedrooms'])) {
+            $beds[] = (int) $listing['bedrooms'];
+        }
+        if (!empty($listing['community'])) {
+            $community = ucwords(strtolower(trim((string) $listing['community'])));
+            if ($community !== '') {
+                $communities[$community] = ($communities[$community] ?? 0) + 1;
+            }
+        }
+    }
+
+    arsort($communities);
+    $bedValues = array_values(array_unique($beds));
+    sort($bedValues);
+
+    return [
+        'count' => count($listings),
+        'price_min' => empty($prices) ? null : min($prices),
+        'price_max' => empty($prices) ? null : max($prices),
+        'beds' => $bedValues,
+        'communities' => array_slice(array_keys($communities), 0, 3),
+    ];
+}
+
+function bed_summary(array $beds): string
+{
+    if (empty($beds)) {
+        return 'Mixed bedroom counts';
+    }
+    return implode(', ', array_map(fn ($bed) => $bed . '+ bd', $beds));
+}
+
+$searchSnapshot = listing_search_snapshot($listings);
 ?>
 <!doctype html>
 <html lang="en">
@@ -138,6 +181,31 @@ function money($value): string { return $value ? '$' . number_format((float) $va
         <div class="alert">Homes are temporarily unavailable here. Call now and get help finding strong Doral options.</div>
       <?php endif; ?>
 
+      <?php if (!$idxError && $searchSnapshot['count'] > 0): ?>
+        <div class="market-snapshot" aria-label="Current rental search snapshot">
+          <div>
+            <span class="snapshot-label">Current search snapshot</span>
+            <strong><?php echo h($searchSnapshot['count']); ?> rentals shown</strong>
+          </div>
+          <?php if ($searchSnapshot['price_min'] && $searchSnapshot['price_max']): ?>
+            <div>
+              <span class="snapshot-label">Displayed rent range</span>
+              <strong><?php echo h(money($searchSnapshot['price_min'])); ?>-<?php echo h(money($searchSnapshot['price_max'])); ?>/mo</strong>
+            </div>
+          <?php endif; ?>
+          <div>
+            <span class="snapshot-label">Bedroom mix</span>
+            <strong><?php echo h(bed_summary($searchSnapshot['beds'])); ?></strong>
+          </div>
+          <?php if (!empty($searchSnapshot['communities'])): ?>
+            <div>
+              <span class="snapshot-label">Communities appearing here</span>
+              <strong><?php echo h(implode(', ', $searchSnapshot['communities'])); ?></strong>
+            </div>
+          <?php endif; ?>
+        </div>
+      <?php endif; ?>
+
       <div class="listing-grid">
         <?php foreach ($listings as $listing): ?>
           <?php
@@ -183,6 +251,20 @@ function money($value): string { return $value ? '$' . number_format((float) $va
                 <p><?php echo h($block['body']); ?></p>
               </article>
             <?php endforeach; ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if (!empty($pageData['related_links'])): ?>
+          <div class="related-guide">
+            <div>
+              <h2>Keep narrowing your Doral search</h2>
+              <p>Use these focused searches when bedroom count, parking, or community fit matters more than seeing every rental at once.</p>
+            </div>
+            <div class="related-links">
+              <?php foreach ($pageData['related_links'] as $link): ?>
+                <a href="<?php echo h($link['path']); ?>"><?php echo h($link['label']); ?></a>
+              <?php endforeach; ?>
+            </div>
           </div>
         <?php endif; ?>
 

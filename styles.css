@@ -138,6 +138,39 @@ h2 { margin: 0; font-size: clamp(28px, 3vw, 42px); line-height: 1.05; }
 .text-link { color: var(--green); font-weight: 850; text-decoration: underline; text-underline-offset: 4px; }
 .alert { padding: 16px; border: 1px solid #f0c9c3; background: #fff3f0; border-radius: 8px; color: #7f2618; margin-bottom: 20px; }
 
+.market-snapshot {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0 0 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+.market-snapshot > div {
+  min-height: 96px;
+  padding: 18px;
+  background: #fff;
+}
+.snapshot-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+.market-snapshot strong {
+  display: block;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.15;
+}
+.market-snapshot > div:last-child strong {
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.25;
+}
+
 .listing-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -184,6 +217,33 @@ h2 { margin: 0; font-size: clamp(28px, 3vw, 42px); line-height: 1.05; }
 }
 .guide-grid h2, .faq-list h2 { font-size: clamp(24px, 2.5vw, 34px); }
 .guide-grid p, .faq-list p { color: var(--muted); line-height: 1.65; }
+.related-guide {
+  display: grid;
+  grid-template-columns: minmax(220px, .55fr) 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 22px;
+  border: 1px solid rgba(15, 75, 63, .18);
+  border-radius: 8px;
+  background: #fff;
+}
+.related-guide h2 { font-size: clamp(24px, 2.5vw, 34px); }
+.related-guide p { color: var(--muted); line-height: 1.65; }
+.related-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.related-links a {
+  min-height: 48px;
+  padding: 14px 15px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--soft);
+  color: var(--green);
+  font-weight: 850;
+}
+.related-links a:hover { border-color: rgba(15, 75, 63, .45); background: #fff; }
 .faq-list {
   display: grid;
   gap: 10px;
@@ -260,8 +320,8 @@ footer {
 .wide { width: 100%; margin-top: 10px; }
 
 @media (max-width: 940px) {
-  .hero, .seo-section, .agent-section, .detail-hero { grid-template-columns: 1fr; }
-  .listing-grid, .guide-grid, .community-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero, .seo-section, .agent-section, .detail-hero, .related-guide { grid-template-columns: 1fr; }
+  .listing-grid, .guide-grid, .community-links, .market-snapshot { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nav-links { display: none; }
   .detail-summary { position: static; }
 }
@@ -272,7 +332,7 @@ footer {
   .header-call { display: none; }
   .hero { padding: 34px 16px 28px; }
   .hero-copy h1 { font-size: 42px; }
-  .listing-grid, .guide-grid, .seo-links, .community-links { grid-template-columns: 1fr; }
+  .listing-grid, .guide-grid, .seo-links, .community-links, .market-snapshot, .related-links { grid-template-columns: 1fr; }
   .section-heading { display: block; }
   .results-section, .guide-section, .community-section, .seo-section, .agent-section, footer, .detail-page { padding: 38px 16px; }
   .agent-section img { width: 128px; }

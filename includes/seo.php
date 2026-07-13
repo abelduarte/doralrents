@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/communities.php';
 
-$sitemap_lastmod = '2026-07-06';
+$sitemap_lastmod = '2026-07-13';
 
 $landingPages = [
     '' => [
@@ -31,11 +31,11 @@ $landingPages = [
     ],
     'doral-townhomes-for-rent' => [
         'path' => '/doral-townhomes-for-rent',
-        'title' => 'Doral Townhomes for Rent | Townhouse Rentals',
+        'title' => 'Doral Townhomes for Rent | Updated Listings & Local Help',
         'h1' => 'Doral townhomes for rent',
-        'description' => 'Browse Doral townhomes for rent and compare townhouse rentals by layout, community, budget, and commute.',
+        'description' => 'Browse Doral townhomes for rent with updated listings, rent ranges, community guidance, and local help before you apply.',
         'query' => ['q' => 'doral', 'kind' => 'townhome'],
-        'intro' => 'Find townhome rentals in Doral when you want more space, privacy, parking, and a neighborhood feel.',
+        'intro' => 'Find townhome rentals in Doral when you want more space, privacy, parking, and a neighborhood feel without wasting time on weak-fit listings.',
         'content_blocks' => [
             [
                 'heading' => 'How to compare Doral townhome rentals',
@@ -45,6 +45,18 @@ $landingPages = [
                 'heading' => 'Where renters often focus',
                 'body' => 'Many renters start near Islands at Doral, Landmark, Downtown Doral, Doral Isles, and Park Central because those areas can offer a mix of townhomes, newer construction, and practical access to schools, parks, shopping, and major roads.',
             ],
+            [
+                'heading' => 'What makes one listing stronger than another',
+                'body' => 'A lower rent is not always the better value. Confirm parking, association timeline, included appliances, outdoor space, application fees, deposits, and whether the landlord can meet your move date before you spend time touring.',
+            ],
+        ],
+        'related_links' => [
+            ['path' => '/3-bedroom-townhomes-for-rent-in-doral', 'label' => '3 bedroom townhomes'],
+            ['path' => '/4-bedroom-townhomes-for-rent-in-doral', 'label' => '4 bedroom townhomes'],
+            ['path' => '/townhomes-for-rent-in-downtown-doral', 'label' => 'Downtown Doral townhomes'],
+            ['path' => '/townhomes-for-rent-in-islands-at-doral', 'label' => 'Islands at Doral townhomes'],
+            ['path' => '/townhomes-for-rent-in-landmark-doral', 'label' => 'Landmark at Doral townhomes'],
+            ['path' => '/doral-townhomes-with-garage', 'label' => 'Townhomes with garage'],
         ],
         'faqs' => [
             [
@@ -157,6 +169,39 @@ $landingPages = [
             ],
         ],
     ],
+    '3-bedroom-townhomes-for-rent-in-doral' => [
+        'path' => '/3-bedroom-townhomes-for-rent-in-doral',
+        'title' => '3 Bedroom Townhomes for Rent in Doral | Updated Search',
+        'h1' => '3 bedroom townhomes for rent in Doral',
+        'description' => 'Search 3 bedroom townhomes for rent in Doral and compare layouts, parking, association timing, and move-in costs.',
+        'query' => ['q' => 'doral', 'kind' => 'townhome', 'beds' => 3],
+        'intro' => 'Focus on Doral townhomes with three or more bedrooms when you need room for family, guests, storage, or a dedicated office.',
+        'content_blocks' => [
+            [
+                'heading' => 'What to check in a 3 bedroom layout',
+                'body' => 'Look at whether all bedrooms are upstairs, whether one room works as an office, how much closet space is available, and whether the parking setup fits multiple drivers. These details matter more than the bedroom count alone.',
+            ],
+            [
+                'heading' => 'Good-fit Doral areas to compare',
+                'body' => 'Three bedroom townhomes often show up around Islands at Doral, Landmark, Doral Cay, Doral Breeze, and Park Central. Availability changes quickly, so compare active listings and similar backup communities before applying.',
+            ],
+        ],
+        'related_links' => [
+            ['path' => '/doral-townhomes-for-rent', 'label' => 'All Doral townhomes'],
+            ['path' => '/4-bedroom-townhomes-for-rent-in-doral', 'label' => '4 bedroom townhomes'],
+            ['path' => '/doral-townhomes-under-3500', 'label' => 'Townhomes under $3,500'],
+        ],
+        'faqs' => [
+            [
+                'question' => 'Are 3 bedroom townhomes common in Doral?',
+                'answer' => 'They are one of the more common townhome searches, but strong listings can still move quickly when pricing, parking, and association timing line up.',
+            ],
+            [
+                'question' => 'What costs should I compare besides rent?',
+                'answer' => 'Compare deposits, association application fees, pet fees, parking costs, move-in fees, and any required renter insurance before choosing a listing.',
+            ],
+        ],
+    ],
     '4-bedroom-townhomes-doral' => [
         'path' => '/4-bedroom-townhomes-doral',
         'title' => '4 Bedroom Townhomes in Doral | Large Townhouse Rentals',
@@ -164,6 +209,29 @@ $landingPages = [
         'description' => 'Find four bedroom Doral townhomes with more room for family, work, and guests.',
         'query' => ['q' => 'doral', 'kind' => 'townhome', 'beds' => 4],
         'intro' => 'Shortlist larger Doral townhomes when bedroom count and storage matter most.',
+    ],
+    '4-bedroom-townhomes-for-rent-in-doral' => [
+        'path' => '/4-bedroom-townhomes-for-rent-in-doral',
+        'title' => '4 Bedroom Townhomes for Rent in Doral | Larger Rentals',
+        'h1' => '4 bedroom townhomes for rent in Doral',
+        'description' => 'Find 4 bedroom townhomes for rent in Doral with help comparing space, parking, association rules, and move-in timing.',
+        'query' => ['q' => 'doral', 'kind' => 'townhome', 'beds' => 4],
+        'intro' => 'Compare larger Doral townhomes when you need extra bedrooms, better storage, guest space, or a more flexible family layout.',
+        'content_blocks' => [
+            [
+                'heading' => 'Large townhomes need a closer review',
+                'body' => 'Four bedroom townhomes can vary widely in usable space. Compare the bedroom sizes, parking, stairs, outdoor area, storage, and whether the community rules work for your household before you commit.',
+            ],
+            [
+                'heading' => 'Move quickly on the right fit',
+                'body' => 'Inventory for larger Doral rentals is usually narrower than apartment inventory. Have documents ready, confirm association timing early, and keep similar nearby options ready in case the first choice is taken.',
+            ],
+        ],
+        'related_links' => [
+            ['path' => '/doral-townhomes-for-rent', 'label' => 'All Doral townhomes'],
+            ['path' => '/3-bedroom-townhomes-for-rent-in-doral', 'label' => '3 bedroom townhomes'],
+            ['path' => '/townhomes-for-rent-in-landmark-doral', 'label' => 'Landmark townhomes'],
+        ],
     ],
     '4-bedroom-homes-doral' => [
         'path' => '/4-bedroom-homes-doral',
@@ -283,6 +351,98 @@ $landingPages = [
                 'question' => 'Do Doral rental communities require association approval?',
                 'answer' => 'Many condo and townhome communities do require approval. Before applying, confirm the documents, fees, deposits, and expected approval timeline.',
             ],
+        ],
+    ],
+    'doral-townhomes-with-garage' => [
+        'path' => '/doral-townhomes-with-garage',
+        'title' => 'Doral Townhomes with Garage | Rental Search Help',
+        'h1' => 'Doral townhomes with garage',
+        'description' => 'Search Doral townhomes with garage or driveway parking and get help confirming parking, HOA rules, and availability.',
+        'query' => ['q' => 'doral', 'kind' => 'townhome'],
+        'intro' => 'Find Doral townhomes where parking, garage access, and storage matter as much as bedroom count.',
+        'content_blocks' => [
+            [
+                'heading' => 'Garage details are worth verifying',
+                'body' => 'Listing photos do not always make parking rules clear. Confirm whether a garage is private, attached, shared, assigned, or only shown as driveway parking before you schedule a tour.',
+            ],
+            [
+                'heading' => 'Parking affects daily life',
+                'body' => 'For many Doral renters, garage or driveway access matters for commuting, guests, storage, school routines, and storm season. Compare parking rules before choosing between similar townhomes.',
+            ],
+        ],
+        'related_links' => [
+            ['path' => '/doral-townhomes-for-rent', 'label' => 'All Doral townhomes'],
+            ['path' => '/3-bedroom-townhomes-for-rent-in-doral', 'label' => '3 bedroom townhomes'],
+            ['path' => '/4-bedroom-townhomes-for-rent-in-doral', 'label' => '4 bedroom townhomes'],
+        ],
+    ],
+    'townhomes-for-rent-in-downtown-doral' => [
+        'path' => '/townhomes-for-rent-in-downtown-doral',
+        'title' => 'Townhomes for Rent in Downtown Doral | Local Search',
+        'h1' => 'Townhomes for rent in Downtown Doral',
+        'description' => 'Search townhomes for rent in Downtown Doral and compare walkability, parking, newer construction, and approval timelines.',
+        'query' => ['q' => 'doral', 'kind' => 'townhome', 'community' => 'DOWNTOWN DORAL|URBANA|CANARIAS'],
+        'intro' => 'Focus on Downtown Doral townhomes when you want newer surroundings, convenient restaurants, shopping, parks, and shorter everyday drives.',
+        'content_blocks' => [
+            [
+                'heading' => 'Why renters look at Downtown Doral',
+                'body' => 'Downtown Doral can work well for renters who want a more connected daily routine near restaurants, shopping, schools, and main roads. Compare parking and association rules carefully because convenience can come with tighter community requirements.',
+            ],
+            [
+                'heading' => 'Compare nearby backups',
+                'body' => 'If Downtown Doral inventory is thin, compare Midtown Doral, Landmark, and Park Central options. Nearby communities may offer a better layout or move-in timeline at a similar budget.',
+            ],
+        ],
+        'related_links' => [
+            ['path' => '/doral-townhomes-for-rent', 'label' => 'All Doral townhomes'],
+            ['path' => '/condos-for-rent/downtown-doral', 'label' => 'Downtown Doral rentals'],
+            ['path' => '/townhomes-for-rent-in-landmark-doral', 'label' => 'Landmark townhomes'],
+        ],
+    ],
+    'townhomes-for-rent-in-islands-at-doral' => [
+        'path' => '/townhomes-for-rent-in-islands-at-doral',
+        'title' => 'Townhomes for Rent in Islands at Doral | Rental Search',
+        'h1' => 'Townhomes for rent in Islands at Doral',
+        'description' => 'Find townhomes for rent in Islands at Doral and compare layouts, parking, community rules, and nearby alternatives.',
+        'query' => ['q' => 'doral', 'kind' => 'townhome', 'community' => 'ISLANDS AT DORAL|ISLAND AT DORAL'],
+        'intro' => 'Compare Islands at Doral townhomes when community feel, bedroom count, parking, and practical daily access matter most.',
+        'content_blocks' => [
+            [
+                'heading' => 'What to compare in Islands at Doral',
+                'body' => 'Look at bedroom placement, garage or driveway setup, patio space, association timing, pet rules, and how the location fits school, work, and airport-area commutes.',
+            ],
+            [
+                'heading' => 'Keep similar communities ready',
+                'body' => 'If the right Islands at Doral rental is not available, nearby Doral communities may offer similar townhome layouts with different pricing, approval rules, or move-in dates.',
+            ],
+        ],
+        'related_links' => [
+            ['path' => '/doral-townhomes-for-rent', 'label' => 'All Doral townhomes'],
+            ['path' => '/condos-for-rent/islands-at-doral', 'label' => 'Islands at Doral rentals'],
+            ['path' => '/townhomes-for-rent-in-downtown-doral', 'label' => 'Downtown Doral townhomes'],
+        ],
+    ],
+    'townhomes-for-rent-in-landmark-doral' => [
+        'path' => '/townhomes-for-rent-in-landmark-doral',
+        'title' => 'Townhomes for Rent in Landmark at Doral | Rental Search',
+        'h1' => 'Townhomes for rent in Landmark at Doral',
+        'description' => 'Search Landmark at Doral townhomes for rent and compare pricing, layout, garage parking, and move-in timing.',
+        'query' => ['q' => 'doral', 'kind' => 'townhome', 'community' => 'LANDMARK AT DORAL'],
+        'intro' => 'Focus on Landmark at Doral townhomes when you want a newer community feel, practical layouts, and strong access to everyday Doral routes.',
+        'content_blocks' => [
+            [
+                'heading' => 'Why Landmark gets attention',
+                'body' => 'Landmark at Doral is a frequent townhome search because renters often want newer construction, attached parking, flexible bedroom layouts, and easier access to shopping, parks, and major roads.',
+            ],
+            [
+                'heading' => 'Check total cost before applying',
+                'body' => 'Compare rent, deposits, association fees, pet rules, parking details, and approval timelines. A strong-looking Landmark listing still needs to fit your full move-in budget and date.',
+            ],
+        ],
+        'related_links' => [
+            ['path' => '/doral-townhomes-for-rent', 'label' => 'All Doral townhomes'],
+            ['path' => '/condos-for-rent/landmark-at-doral', 'label' => 'Landmark rentals'],
+            ['path' => '/townhomes-for-rent-in-downtown-doral', 'label' => 'Downtown Doral townhomes'],
         ],
     ],
 ];
