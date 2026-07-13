@@ -14,7 +14,7 @@ jobs:
       group: deploy-doralrents
       cancel-in-progress: false
     env:
-      WEBSITE_ARCHIVE: website.tar.gz
+      WEBSITE_ARCHIVE: doralrents-${{ github.run_id }}.tar.gz
       WEBSITE_DEPLOY_PATH: ${{ secrets.WEB_DEPLOY_PATH || '/var/www/doralrents' }}
       DRG_API_BASE: ${{ secrets.DRG_API_BASE || 'https://duarterealtygroup.com/api' }}
       DRG_API_ACCESS_TOKEN: ${{ secrets.DRG_API_ACCESS_TOKEN }}
